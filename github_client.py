@@ -15,8 +15,10 @@ def get_diff(repo_name,pr_number):
 
 
 def post_comment(repo_name, pr_number, commit_sha, comment_data):
-    url = "https://api.github.com/repos/" + repo_name + "/pulls/" + str(pr_number) + "/comments"
+    url = "https://api.github.com/repos/" + repo_name + "/issues//" + str(pr_number) + "/comments"
     response = httpx.post(url,headers=HEADERS, json=comment_data)
+    comment_response = post_comment(repo_name, pr_number, commit_sha, {"body": comment_body})
+    print("comment_response",comment_response)
     return response.json()
 
 def set_merge_status( repo_name, commit_sha, state, description):
@@ -25,7 +27,7 @@ def set_merge_status( repo_name, commit_sha, state, description):
     response = httpx.post(url, headers=HEADERS, json=data)
     return response.json()
 
-
+#asjd kjasniodfnaodfodasmocmaos
 
 
 
