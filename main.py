@@ -22,7 +22,7 @@ WEBHOOK_SECRET=os.getenv("WEBHOOK_SECRET")
 def verify_signature(payload,signature):
     secret = WEBHOOK_SECRET.encode()
     mac=hmac.new(secret, payload, hashlib.sha256)
-    return hmac.compare_digest(mac.hexdigest(), signature)
+    return hmac.compare_digest("sha256=" + mac.hexdigest(), signature)
 
 @app.post("/webhook")
 async def webhook(request:Request):
