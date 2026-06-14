@@ -34,6 +34,7 @@ async def webhook(request:Request):
     
     data = await request.json()
     action = data.get("action")
+    print("Webhook action:", action)
     pr = data.get("pull_request")
     repo_name = data["repository"]["full_name"]
     pr_number = pr["number"]
