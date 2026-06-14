@@ -24,6 +24,7 @@ def verify_signature(payload,signature):
     mac=hmac.new(secret, payload, hashlib.sha256)
     return hmac.compare_digest("sha256=" + mac.hexdigest(), signature)
 
+print("Webhook hit")
 @app.post("/webhook")
 async def webhook(request:Request):
     body = await request.body()
