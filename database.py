@@ -28,4 +28,5 @@ def update_pr_scores(pr_id, code_quality, security, testing, maintainability):
     result = (supabase.table("pull_requests").update({"code_quality_score":code_quality, "security_score":security, "testing_score":testing, "maintainability_score":maintainability}).eq("id",pr_id)).execute()
 
 
-#test
+#testing this file
+##hello
